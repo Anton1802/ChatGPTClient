@@ -1,0 +1,66 @@
+<MainScreenView>
+    
+    AnchorLayout:
+        anchor_y: "top"
+
+        ActionBar:
+            background_color: .11, .7, .55, 1
+            ActionView:
+                
+                ActionPrevious:
+                    title: "ChatGPT"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "25dp"
+       
+        Widget:
+            id: size_w
+            size_hint_y: 0.1
+        
+        ScrollView:
+            do_scroll_x: False
+            bar_width: 5
+            bar_color: .11, .7, .55, 1
+
+            canvas.before:
+                Color:
+                    rgba: .11, .7, .55, 1
+                Line:
+                    width: 7
+                    rectangle: self.x, self.y, self.width, self.height
+
+            Label:
+                text: "Please enter request ChatGPT!"
+                halign: "justify"
+                valign: "top"
+                font_size: "18sp"
+                size_hint: None, None
+                size: self.texture_size
+                padding: "15dp"
+                background_color: .59, .65, .64, 1
+
+        TextInput:
+            hint_text: "Your request..."
+            halign: "left"
+            valign: "top"
+            hint_text_color: "gray"
+            background_color: "black"
+            foreground_color: "white"
+            font_size: "18sp"
+
+            canvas.after:
+                Color:
+                    rgba: .11, .7, .55, 1
+                Line:
+                    width: 4
+                    rectangle: self.x, self.y, self.width, self.height
+
+        Button:
+            size_hint_y: None
+            height: "30dp"
+            text: "Send"
+            font_size: "18sp"
+            background_color: .11, .7, .55, 1
+            background_normal: ''

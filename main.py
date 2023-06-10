@@ -8,8 +8,8 @@ from Model.authscreen import AuthScreenModel
 from Model.mainscreen import MainScreenModel
 
 Config.set('graphics', 'resizable', '1')
-Config.set('graphics', 'width', '500')
-Config.set('graphics', 'height', '500')
+Config.set('graphics', 'width', '640')
+Config.set('graphics', 'height', '480')
 
 Config.write()
 
