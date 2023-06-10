@@ -14,6 +14,7 @@
             font_size: "30sp"
             
         TextInput:
+            id: token_text_input
             height: "30dp"
             hint_text: "Your Token ChatGPT"
             size_hint_y: None
@@ -27,4 +28,23 @@
             size_hint_y: None
             size_hint_x: 0.5
             font_size: "24sp"
-            pos_hint: {"center_x": 0.5}	
+            pos_hint: {"center_x": 0.5}
+            on_press: root.login_click_button()
+
+<Apopup>
+    id: pop
+    auto_dismiss: False
+    size_hint: 0.5, 0.5
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: pop.text 
+
+        Button:
+            text: "OK"
+            font_size: 24
+            on_release: pop.dismiss()
+
