@@ -32,6 +32,7 @@
                     rectangle: self.x, self.y, self.width, self.height
 
             Label:
+                id: label_output
                 text: "Please enter request ChatGPT!"
                 halign: "justify"
                 valign: "top"
@@ -42,6 +43,7 @@
                 background_color: .59, .65, .64, 1
 
         TextInput:
+            id: text_input_request
             hint_text: "Your request..."
             halign: "left"
             valign: "top"
@@ -64,3 +66,4 @@
             font_size: "18sp"
             background_color: .11, .7, .55, 1
             background_normal: ''
+            on_press: root.send_click_button()

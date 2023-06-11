@@ -8,3 +8,6 @@ class MainScreenController:
 
     def get_screen(self):
         return self.view
+
+    def set_request(self, message: str):
+        self.model.send_request(message)

@@ -50,5 +50,3 @@ class AuthScreenModel:
                 json_data = json.load(file)
 
                 return json_data['token']
-        
-           
