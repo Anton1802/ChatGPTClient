@@ -1,3 +1,5 @@
+#:import Path pathlib.Path
+
 <MainScreenView>
     
     AnchorLayout:
@@ -5,10 +7,15 @@
 
         ActionBar:
             background_color: .11, .7, .55, 1
+
             ActionView:
                 
                 ActionPrevious:
                     title: "ChatGPT"
+                    with_previous: False
+                    app_icon: str(Path("Resource", "chatgpt-icon.png"))
+                    app_icon_width: "35dp"
+                    app_icon_height: "35dp"
 
     BoxLayout:
         orientation: "vertical"
