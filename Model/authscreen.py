@@ -41,5 +41,14 @@ class AuthScreenModel:
                     json.dump(json_data, file)
 
         return True
+
+    def get_token(self) -> bool | str:
+        if not os.path.exists(self.__path_token):
+            return False
+        else:
+            with open(str(self.__path_token), 'r') as file:
+                json_data = json.load(file)
+
+                return json_data['token']
         
            
