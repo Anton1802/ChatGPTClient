@@ -24,7 +24,7 @@
             bar_width: 5
             bar_color: .11, .7, .55, 1
 
-            canvas.before:
+            canvas:
                 Color:
                     rgba: .11, .7, .55, 1
                 Line:
@@ -41,6 +41,7 @@
                 size: self.texture_size
                 padding: "15dp"
                 background_color: .59, .65, .64, 1
+                text_size: size_w.width, None
 
         TextInput:
             id: text_input_request
