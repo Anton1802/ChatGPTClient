@@ -1,14 +1,15 @@
 import json
+import multitasking
 from pathlib import Path
-from typing import Generator
 
 from Utility.client import OpenAIClient
+
 
 class MainScreenModel:
     def __init__(self) -> None:
         self._observers = []
         self.__path_token = Path('Config', 'token.json') 
-        self.__response: Generator[str, None, None] 
+        self.__response: list = [] 
 
     @property
     def response(self):
@@ -24,13 +25,16 @@ class MainScreenModel:
         for obj in self._observers:
             obj.model_is_changed()
 
+    @multitasking.task
     def send_request(self, message: str) -> None:
+        self.__response = []
+
         with open(str(self.__path_token), 'r') as file:
             token = json.load(file)['token']
         
         client = OpenAIClient(token, 10)
 
-        self.__response = client.request([{'role': 'user', "content": message}])
-
-        self.notify_observers()
-        
+        client.request(
+            messages=[{'role': 'user', 'content': message}],
+            response_message=self.__response
+        )

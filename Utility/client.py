@@ -1,7 +1,6 @@
 import requests
 import json
-from typing import Generator
-
+import multitasking
 
 class OpenAIClient:
     def __init__(self, api_key: str, timeout: int) -> None:
@@ -10,13 +9,15 @@ class OpenAIClient:
         
         self.__timeout = timeout
 
+    @multitasking.task
     def request(
         self, 
         messages: list[dict[str, str]],
         model: str = "gpt-3.5-turbo",
         temperature: float = 1,
         top_probability: float = 1,
-    ) -> Generator[str, None, None]:
+        response_message: list = [None]
+    ) -> None:
         data = {
             "messages": messages,
             "model": model,
@@ -35,15 +36,18 @@ class OpenAIClient:
             timeout=self.__timeout
         )
         response.raise_for_status()
-
-        for line in response.iter_lines():
-            data = line.lstrip(b"data: ").decode("utf-8")
-            if data == "[DONE]":
-                break
-            if not data:
-                continue
-            data = json.loads(data)
-            delta = data["choices"][0]["delta"]
-            if "content" not in delta:
-                continue
-            yield delta["content"]
+        
+        def gen(response):
+            for line in response.iter_lines():
+                data = line.lstrip(b"data: ").decode("utf-8")
+                if data == "[DONE]":
+                    break
+                if not data:
+                    continue
+                data = json.loads(data)
+                delta = data["choices"][0]["delta"]
+                if "content" not in delta:
+                    continue
+                yield delta["content"]
+        
+        response_message.append(gen(response))

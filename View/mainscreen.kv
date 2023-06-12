@@ -75,3 +75,19 @@
             background_color: .11, .7, .55, 1
             background_normal: ''
             on_press: root.send_click_button()
+
+<ProgressPopup>
+    title: "Info"
+    size_hint: 0.4, 0.4
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: "Wait response..."
+
+        ProgressBar:
+            id: response_progress_bar
+            min: 0
+            max: 1
+            value: 0
