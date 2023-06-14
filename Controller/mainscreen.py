@@ -20,7 +20,11 @@ class MainScreenController:
         def check_progressbar(view, model):
             while True:
                 time.sleep(1)
-                view.popup.ids.response_progress_bar.value += .01
+                if view.popup.ids.response_progress_bar.value != 1:
+                    view.popup.ids.response_progress_bar.value += .2
+                else:
+                    view.popup.ids.response_progress_bar.value = 0
+
                 if len(model.response) > 0:
                     model.notify_observers()
                     break

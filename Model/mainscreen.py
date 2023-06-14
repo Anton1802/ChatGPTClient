@@ -29,6 +29,10 @@ class MainScreenModel:
     def send_request(self, message: str) -> None:
         self.__response = []
 
+        if len(message) <= 0:
+            self.__response.append(None)
+            return
+
         with open(str(self.__path_token), 'r') as file:
             token = json.load(file)['token']
         
