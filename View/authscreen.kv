@@ -14,9 +14,11 @@
             font_size: "30sp"
             
         TextInput:
+            id: token_text_input
             height: "30dp"
-            hint_text: "Your Token ChatGPT"
+            hint_text: "sk-"
             size_hint_y: None
+            multiline: False
             
         Widget:	
             
@@ -26,4 +28,24 @@
             size_hint_y: None
             size_hint_x: 0.5
             font_size: "24sp"
-            pos_hint: {"center_x": 0.5}	
+            pos_hint: {"center_x": 0.5}
+            on_press: root.login_click_button()
+
+<Apopup>
+    auto_dismiss: False
+    size_hint: 0.5, 0.5
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    title_size: "20sp"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: root.text
+            font_size: "20sp"
+
+        Button:
+            text: "OK"
+            font_size: 24
+            on_release: root.dismiss()
+
