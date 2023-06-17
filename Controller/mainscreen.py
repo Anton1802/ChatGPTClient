@@ -32,3 +32,5 @@ class MainScreenController:
             view.popup.dismiss()
             
         check_progressbar(self.view, self.model)
+
+        self.view.ids.text_input_request.text = ""
