@@ -16,6 +16,10 @@ class ProgressPopup(Popup):
     pass
 
 
+class AskPopup(Popup):
+    text_label = ObjectProperty()
+
+
 class MainScreenView(Screen, Observer):
     controller = ObjectProperty()
     model = ObjectProperty()
@@ -39,6 +43,28 @@ class MainScreenView(Screen, Observer):
     def send_click_button(self) -> None:
         text = self.ids.text_input_request.text 
         self.controller.set_request(text)
+
+    def logout_click_yes(self) -> None:
+        self.controller.logout()
+        self.popup.dismiss()
+
+    def logout_click_no(self) -> None:
+        self.popup.dismiss()
+
+    def logout_click_button(self) -> None:
+        self.popup = AskPopup(
+            title="Ask",
+            text_label="You want to log out?",
+            auto_dismiss=False,
+        )
+
+        btn_yes = self.popup.ids.btn_yes
+        btn_no = self.popup.ids.btn_no
+
+        btn_yes.bind(on_press=lambda x: self.logout_click_yes())
+        btn_no.bind(on_press=lambda x: self.logout_click_no())
+
+        self.popup.open()
 
     def show_progress_popup(self) -> None:
         self.popup = ProgressPopup()

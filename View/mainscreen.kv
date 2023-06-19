@@ -17,6 +17,10 @@
                     app_icon_width: "35dp"
                     app_icon_height: "35dp"
 
+                ActionButton:
+                    text: "Logout"
+                    on_press: root.logout_click_button()
+
     BoxLayout:
         orientation: "vertical"
         padding: "20dp"
@@ -79,6 +83,7 @@
 
 <ProgressPopup>
     title: "Info"
+    font_size: "20sp"
     size_hint: None, None
     size: "300dp", "110dp"
     
@@ -94,3 +99,30 @@
             min: 0
             max: 1
             value: 0
+
+<AskPopup>
+    size_hint: None, None
+    title_size: "20sp"
+    size: "250dp", "200dp"
+
+    BoxLayout:
+        spacing: "10dp"
+        orientation: "vertical"
+
+        Label:
+            text: root.text_label
+            font_size: "20sp"
+
+        BoxLayout:
+            spacing: "10dp"
+            padding: "10dp"
+            orientation: "horizontal"
+            
+            Button:
+                id: btn_yes
+                text: "Yes"
+
+            Button:
+                id: btn_no
+                text: "No"
+

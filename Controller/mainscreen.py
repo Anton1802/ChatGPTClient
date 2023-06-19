@@ -5,9 +5,10 @@ from View.mainscreen import MainScreenView
 
 
 class MainScreenController:
-    def __init__(self, model):
+    def __init__(self, model, sm):
         self.model = model
         self.view = MainScreenView(controller=self, model=self.model, name="mainscreen")
+        self.sm = sm 
 
     def get_screen(self):
         return self.view
@@ -34,3 +35,7 @@ class MainScreenController:
         check_progressbar(self.view, self.model)
 
         self.view.ids.text_input_request.text = ""
+
+    def logout(self):
+        if self.model.remove_token():
+            self.sm.current = "authscreen"

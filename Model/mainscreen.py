@@ -1,5 +1,6 @@
 import json
 import multitasking
+import os
 from pathlib import Path
 
 from Utility.client import OpenAIClient
@@ -42,3 +43,12 @@ class MainScreenModel:
             messages=[{'role': 'user', 'content': message}],
             response_message=self.__response
         )
+
+    def remove_token(self) -> bool:
+        try:
+            os.remove(self.__path_token)
+            return True
+        except FileNotFoundError:
+            return False
+        except OSError:
+            return False
