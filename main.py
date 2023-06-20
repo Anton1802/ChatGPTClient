@@ -23,7 +23,7 @@ class ChatGPTClient(App):
         self.sm = ScreenManager()
 
         self.controller_auth = AuthScreenController(self.model_auth, self.sm)
-        self.controller_main = MainScreenController(self.model_main)
+        self.controller_main = MainScreenController(self.model_main, self.sm)
         
     def build(self):
         self.sm.add_widget(self.controller_auth.get_screen())

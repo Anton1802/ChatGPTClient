@@ -1,24 +1,41 @@
+#:import Path pathlib.Path
+
 <AuthScreenView>
     BoxLayout:
         orientation: 'vertical'
         padding: "50dp"
         spacing: "50dp"
         
-        Widget:
-        
-        Label:
-            text: "ChatGPT"
-            height: "20dp"
-            size_hint: 1, 0.2
-            halign: "center"
-            font_size: "30sp"
-            
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "top"
+            size_hint: 1, 0.5
+
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: "50dp"
+                size_hint: None, None
+                size: "120dp", "80dp"
+
+                Label:
+                    text: "ChatGPT"
+                    font_size: "30sp"
+                    size_hint: None, None
+                    size: "50dp", "50dp"
+
+                Image:
+                    source: str(Path('Resource', 'chatgpt-icon.png'))
+                    size_hint: None, None
+                    size: "50dp", "50dp"
+
         TextInput:
             id: token_text_input
             height: "30dp"
             hint_text: "sk-"
             size_hint_y: None
             multiline: False
+            background_color: "gray"
+            hint_text_color: "white"
             
         Widget:	
             
@@ -28,17 +45,22 @@
             size_hint_y: None
             size_hint_x: 0.5
             font_size: "24sp"
+            background_color: .11, .7, .55, 1
+            background_normal: ''
             pos_hint: {"center_x": 0.5}
             on_press: root.login_click_button()
 
 <Apopup>
     auto_dismiss: False
-    size_hint: 0.5, 0.5
-    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    size_hint: None, None
+    height: "200dp"
+    width: "250dp"
     title_size: "20sp"
 
     BoxLayout:
         orientation: "vertical"
+        padding: "10dp"
+        spacing: "10dp"
 
         Label:
             text: root.text
@@ -48,4 +70,5 @@
             text: "OK"
             font_size: 24
             on_release: root.dismiss()
+            size_hint: 1, 0.5
 
