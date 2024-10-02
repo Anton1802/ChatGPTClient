@@ -14,7 +14,7 @@ Config.set('graphics', 'height', '480')
 Config.write()
 
 
-class ChatGPTClient(App):
+class LlamaClient(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.model_auth = AuthScreenModel()
@@ -42,4 +42,4 @@ class ChatGPTClient(App):
 
 
 if __name__ == "__main__":
-    ChatGPTClient().run()
+    LlamaClient().run()

@@ -19,16 +19,7 @@ class AuthScreenModel:
     def notify_observers(self):
         pass
 
-    def _validate_token(self, token: str) -> bool:
-        pattern = r'^sk-[a-zA-Z-0-9]{1,}$'
-        if re.match(pattern, token):
-            return True
-        else:
-            return False
-
     def set_token(self, token: str) -> bool:
-        if not self._validate_token(token):
-            return False
 
         if not os.path.exists(self.__path_token):
            with open(str(self.__path_token), 'w') as file:

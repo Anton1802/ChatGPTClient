@@ -6,19 +6,19 @@
         anchor_y: "top"
 
         ActionBar:
-            background_color: .11, .7, .55, 1
+            background_color: 255, 165, 0, 0.5
 
             ActionView:
                 
                 ActionPrevious:
-                    title: "ChatGPT"
+                    title: "Llama"
                     with_previous: False
-                    app_icon: str(Path("Resource", "chatgpt-icon.png"))
+                    app_icon: str(Path("Resource", "lamma-icon.png"))
                     app_icon_width: "35dp"
                     app_icon_height: "35dp"
 
                 ActionButton:
-                    text: "Logout"
+                    text: "Exit"
                     on_press: root.logout_click_button()
 
     BoxLayout:
@@ -33,18 +33,18 @@
         ScrollView:
             do_scroll_x: False
             bar_width: 5
-            bar_color: .11, .7, .55, 1
+            bar_color: "orange"
 
             canvas:
                 Color:
-                    rgba: .11, .7, .55, 1
+                    rgba: 255, 165, 0, 0.5
                 Line:
                     width: 7
                     rectangle: self.x, self.y, self.width, self.height
 
             Label:
                 id: label_output
-                text: "Please enter request ChatGPT!"
+                text: "Please enter request Llama!"
                 halign: "justify"
                 valign: "top"
                 font_size: "18sp"
@@ -67,7 +67,7 @@
 
             canvas.after:
                 Color:
-                    rgba: .11, .7, .55, 1
+                    rgba: 255, 165, 0, 0.5
                 Line:
                     width: 4
                     rectangle: self.x, self.y, self.width, self.height
@@ -77,8 +77,7 @@
             height: "30dp"
             text: "Send"
             font_size: "18sp"
-            background_color: .11, .7, .55, 1
-            background_normal: ''
+            background_color: 255, 165, 0, 0.5
             on_press: root.send_click_button()
 
 <ProgressPopup>

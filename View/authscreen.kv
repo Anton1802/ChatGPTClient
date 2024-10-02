@@ -18,20 +18,20 @@
                 size: "120dp", "80dp"
 
                 Label:
-                    text: "ChatGPT"
+                    text: "Llama"
                     font_size: "30sp"
                     size_hint: None, None
                     size: "50dp", "50dp"
 
                 Image:
-                    source: str(Path('Resource', 'chatgpt-icon.png'))
+                    source: str(Path('Resource', 'lamma-icon.png'))
                     size_hint: None, None
-                    size: "50dp", "50dp"
+                    size: "100dp", "100dp"
 
         TextInput:
             id: token_text_input
             height: "30dp"
-            hint_text: "sk-"
+            hint_text: "Your API TOKEN..."
             size_hint_y: None
             multiline: False
             background_color: "gray"
@@ -45,7 +45,7 @@
             size_hint_y: None
             size_hint_x: 0.5
             font_size: "24sp"
-            background_color: .11, .7, .55, 1
+            background_color: 255, 165, 0, 0.5
             background_normal: ''
             pos_hint: {"center_x": 0.5}
             on_press: root.login_click_button()
